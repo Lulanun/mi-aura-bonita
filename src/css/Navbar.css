@@ -1,0 +1,21 @@
+.nav-container {
+  background-color: rgb(241, 241, 241);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.anchor-nav {
+    color: rgb(233, 125, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    height: 200px;
+    width: auto;
+    clip-path: circle(50%);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
