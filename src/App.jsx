@@ -1,18 +1,19 @@
 import './App.css'
-import ItemCount from './components/ItemCount'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaBeer } from 'react-icons/fa';
+//import ItemCount from './components/ItemCount'
 import ItemListContainer from './components/ItemListContainer'
 import Navbar from "./components/Navbar"
 
 function App() {
 
-const greeting ='Conocelos!'
+const greeting ='Nos estamos renovando... volve pronto!'
 console.log('App')
   return (
     <>
       <Navbar/>
-      <ItemListContainer saludo='Productos con Intencion y Equilibrio' greeting={greeting}/>
-      {/* NO ENTRA EN LA PRIMER PRENTREGA */}
-      {/* <ItemCount stock={10}/> */}
+       {/* Esto va para la proxima entrega <ItemCount stock={10}/> */}
+      <ItemListContainer subtitulo='Productos con Intencion y Equilibrio' texto={greeting}/>
     </>
   )
 }

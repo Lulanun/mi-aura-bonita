@@ -9,7 +9,7 @@ const ItemCount = ({stock})=> {
             setCounter( counter + 1)
         }
     }
-      const restar = ()=>{
+    const restar = ()=>{
         if(counter > 0){
 
             setCounter( counter - 1)
