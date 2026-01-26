@@ -1,23 +1,15 @@
-
-.nav-container {
-  background-color: rgb(238, 246, 204);
-  padding: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 30px;
-  font-weight:'bold';
+.navbar-nav .nav-link {
+    color: rgb(255, 177, 125);
+    font-weight: bold;
 }
 
-.anchor-nav {
-    color: rgb(233, 125, 255);
-    text-decoration: none;
-    cursor: pointer;
+.navbar-nav .nav-link.active {
+    text-decoration: underline;   
 }
 
-img {
-    height: 200px;
-    width: auto;
-    clip-path: circle(50%);
-    border-radius: 10px;
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
 }
