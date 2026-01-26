@@ -87,7 +87,7 @@ const products = [
     stock: 0,
     price: 11500,
     category: 'Velas',
-    img: '/img/Vela-Vitalidad6.jpg'
+    img: '/img/Vela-Amor.jpg'
   },
   {
     id: 9,
@@ -98,7 +98,7 @@ const products = [
     stock: 0,
     price: 11500,
     category: 'Velas',
-    img: '/img/Vela-Vitalidad7.jpg'
+    img: '/img/Vela-Creatividad.jpg'
   },
   {
     id: 10,
