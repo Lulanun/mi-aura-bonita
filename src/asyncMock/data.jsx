@@ -1,17 +1,16 @@
-const products = [
+export const products = [
+  // {
+  //   id: 1,
+  //   name: 'Spray Limpieza Energética Profunda',
+  //   shortDescription: 'Limpieza profunda del aura y armonización energética.',
+  //   description: 'Spray áurico ideal para limpiar y armonizar la energía después de visitas, discusiones o rituales. Ayuda a liberar cargas energéticas densas y renovar el campo áurico.',
+  //   beneficios: 'Eucalipto: purifica, despeja energías densas y aporta claridad mental. Romero: protege el campo energético, revitaliza y fortalece la intención. Ruda: tradicionalmente utilizada para limpieza profunda y protección espiritual.',
+  //   stock: 0,
+  //   price: 9500,
+  //   category: 'Sprays',
+  //   img: '/img/Mock.png'
+  // },
   {
-    id: 1,
-    name: 'Spray Limpieza Energética Profunda',
-    shortDescription: 'Limpieza profunda del aura y armonización energética.',
-    description: 'Spray áurico ideal para limpiar y armonizar la energía después de visitas, discusiones o rituales. Ayuda a liberar cargas energéticas densas y renovar el campo áurico.',
-    beneficios: 'Eucalipto: purifica, despeja energías densas y aporta claridad mental. Romero: protege el campo energético, revitaliza y fortalece la intención. Ruda: tradicionalmente utilizada para limpieza profunda y protección espiritual.',
-    stock: 0,
-    price: 9500,
-    category: 'Sprays',
-    img: '/img/Mock.png'
-  },
-  {
-    id: 2,
     name: 'Spray Amor y Autoestima',
     shortDescription: 'Activa el amor propio y la seguridad personal.',
     description: 'Acompaña rituales de amor propio y seguridad personal. Ideal para rociar el aura al despertar o antes de encuentros importantes, potenciando la conexión con uno mismo.',
@@ -22,7 +21,6 @@ const products = [
     img: '/img/SA-AmorAutoestima1.jpg'
   },
   {
-    id: 3,
     name: 'Spray Calma y Relajación',
     shortDescription: 'Relajación profunda para cuerpo y mente.',
     description: 'Bruma aromática para relajar cuerpo y mente. Perfecta para antes de dormir, meditar o atravesar momentos de ansiedad.',
@@ -34,7 +32,6 @@ const products = [
     img: '/img/SA-CalmaRelax.jpg'
   },
   {
-    id: 4,
     name: 'Spray Abundancia y Prosperidad',
     shortDescription: 'Activa la energía de la prosperidad y la acción.',
     description: 'Spray energético pensado para activar la prosperidad y abrir caminos. Ideal antes de trabajar, emprender o realizar rituales de abundancia.',
@@ -45,7 +42,6 @@ const products = [
     img: '/img/SA-Abundancia2.jpg'
   },
   {
-    id: 5,
     name: 'Spray Alegría y Vitalidad',
     shortDescription: 'Energía fresca para empezar el día con ánimo.',
     description: 'Bruma revitalizante para comenzar el día con energía positiva. Aporta alegría, frescura y eleva el ánimo.',
@@ -56,7 +52,7 @@ const products = [
     img: '/img/SA-Alegria-Vitalidad.jpg'
   },
   {
-    id: 6,
+
     name: 'Spray Sanación Emocional',
     shortDescription: 'Contención emocional y acompañamiento energético.',
     description: 'Acompaña procesos de sanación, perdón y contención emocional. Ideal para momentos de tristeza, duelos o rupturas.',
@@ -67,7 +63,6 @@ const products = [
     img: '/img/Mock.png'
   },
   {
-    id: 7,
     name: 'Vela Lavanda',
     shortDescription: 'Relajación profunda y armonía mental.',
     description: 'Vela aromática de soja diseñada para promover la relajación profunda y la armonía mental. Ideal para momentos de descanso y meditación.',
@@ -79,7 +74,6 @@ const products = [
     img: '/img/Vela-Calma.jpg'
   },
   {
-    id: 8,
     name: 'Vela Rosas – Amor',
     shortDescription: 'Atrae amor y dulzura al espacio.',
     description: 'Vela energética pensada para atraer el amor y fortalecer vínculos afectivos. Aporta dulzura, calidez y conexión emocional.',
@@ -90,18 +84,16 @@ const products = [
     img: '/img/Vela-Amor.jpg'
   },
   {
-    id: 9,
     name: 'Vela Jazmín / Ylang Ylang',
     shortDescription: 'Creatividad, sensualidad y energía elevada.',
     description: 'Vela aromática que eleva la energía y estimula la creatividad. Ideal para espacios de inspiración y conexión espiritual.',
     beneficios: 'Jazmín: eleva la vibración emocional y espiritual. Ylang Ylang: estimula la creatividad y el bienestar. Mica dorada o caléndula: energía solar y expansión.',
-    stock: 0,
+    stock: 2,
     price: 11500,
     category: 'Velas',
     img: '/img/Vela-Creatividad.jpg'
   },
   {
-    id: 10,
     name: 'Vela Fresa y Mandarina',
     shortDescription: 'Vitalidad, motivación y energía positiva.',
     description: 'Vela vibrante que aporta vitalidad, motivación y energía positiva. Ideal para activar el ánimo y la acción.',
@@ -112,7 +104,6 @@ const products = [
     img: '/img/Vela-Vitalidad3.jpg'
   },
   {
-    id: 11,
     name: 'Tag Aromático - Vainilla',
     shortDescription: 'Aroma cálido que brinda confort emocional.',
     description: 'Tag aromático ideal para perfumar espacios pequeños, placares o cajones, aportando calidez y bienestar.',
@@ -123,7 +114,6 @@ const products = [
     img: '/img/Tag-Vainilla.jpg'
   },
   {
-    id: 12,
     name: 'Tag Aromático - Gardenia',
     shortDescription: 'Elegancia floral y armonía emocional.',
     description: 'Tag aromático floral para perfumar ambientes y objetos personales con una fragancia suave y envolvente.',
@@ -134,15 +124,34 @@ const products = [
     img: '/img/Tag-Gardenia.jpg'
   },
   {
-    id: 13,
     name: 'Roll On - Feromonas',
     shortDescription: 'Atractivo personal y magnetismo natural.',
     description: 'Roll on energético diseñado para potenciar el atractivo personal y la conexión sensorial.',
     beneficios: 'Feromonas: estimulan el magnetismo personal y la atracción. Aplicación localizada para uso diario.',
-    stock: 2,
+    stock: 6,
     price: 9500,
     category: 'Varios',
     img: '/img/RollOn.jpg'
+  },
+  {
+    name: 'Vela de Miel - Luna',
+    shortDescription: 'Dulzura, prosperidad y apertura de caminos.',
+    description: 'Vela artesanal elaborada con cera de abeja natural, pensada como un ritual de intención para atraer dulzura, bienestar y energía positiva a tu espacio. Su forma lunar representa los ciclos, la renovación y la manifestación consciente. Ideal para acompañar momentos de meditación, decretos o rituales de abundancia.',
+    beneficios: 'Cera de abeja: tradicionalmente asociada con prosperidad y armonía. Forma lunar: simboliza ciclos, crecimiento y apertura de caminos. Combustión natural: invita a una pausa consciente para enfocar tu intención y elevar tu energía.',
+    stock: 4,
+    price: 7900,
+    category: 'Velas',
+    img: '/img/VelaMiel-Luna.jpg'
+  },
+  {
+    name: 'Vela de Miel – Forma Globo',
+    shortDescription: 'Expansión, abundancia y energía que crece.',
+    description: 'Vela artesanal elaborada con cera de abeja natural, diseñada para acompañar rituales de expansión y manifestación consciente. Su forma globo simboliza plenitud, crecimiento y energía en movimiento. Es ideal para momentos donde deseas potenciar proyectos, atraer prosperidad y fortalecer tu intención con dulzura y equilibrio.',
+    beneficios: 'Cera de abeja: asociada con prosperidad, armonía y bienestar. Forma globo: representa expansión, plenitud y crecimiento energético. Combustión natural: crea un espacio de pausa consciente para enfocar decretos, intenciones y rituales de abundancia.',
+    stock: 4,
+    price: 13900,
+    category: 'Velas',
+    img: '/img/VelaMiel-Globo.jpg'  
   }
 ]
 

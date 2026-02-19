@@ -1,28 +1,53 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../asyncMock/data"
+import { getProducts, products } from "../asyncMock/data"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import ItemList from "./ItemList"
-
+import Loader from "./Loader"
+import { db } from "../service/firebase";
 import { Link, useParams } from "react-router-dom"
-const ItemListContainer = ({subtitulo, texto})=> {
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+const ItemListContainer = ()=> {
 const [data, setData] = useState([])
+const [loading, setLoading]=useState(false)
 const {type} = useParams()
 
-    useEffect(()=>{
-    getProducts()//retorna la promesa
-    .then((res)=> {
-        if (type){
-        setData(res.filter((prod)=>prod.category === type))
-        } else {
-        setData(res)}
-    })// trata la promesa y guardo la res en un estado
-    .catch((error)=> console.log(error))
-     },[type])
-    return(   
-        <div>
-           <ItemList data={data}/>
+useEffect(()=>{
+        setLoading(true)
+        //conecto a mi coleccion
+    const prodCollection = type ? query(collection(db, "productos"), where("category", "==", type)) : collection(db, "productos")
+      // pido los documentos
+    getDocs(prodCollection)
+    .then((res)=>{//tratamos la promesa
+        //limpiar y obtener los datos
+        const list = res.docs.map((doc)=>{
+            return{
+                id:doc.id,
+                ...doc.data()
+            }
+        })
+        setData(list)
+        })
+        .catch((error)=>console.log(error))//atrapar el error
+        .finally(()=> setLoading(false))
+        // console.log(getProducts())
+    },[type])
+
+return(
+        <>
+        {
+            loading 
+            ? <Loader text={type ? 'Cargando categoría' : 'Cargando productos'}/>
+            : <div>
+            <h1>{type && <span style={{textTransform:'capitalize'}}>{type}</span>}</h1>
+            {/* {data.map((prod)=><div key={prod.id} >
+                <p>Producto:{prod.name}</p>
+                <p>${prod.price}</p>
+            </div>)} */}
+            <ItemList data={data}/>
         </div>
+        }
+        </>
     )
 }
 
