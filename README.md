@@ -9,7 +9,8 @@ La aplicación permite a los usuarios explorar el catálogo, visualizar detalles
 **Mi Aura Bonita** es un emprendimiento familiar real creado junto a mi cuñada y mi suegra, enfocado en ofrecer productos energéticos y aromáticos diseñados para el bienestar, la armonía y la conexión espiritual.
 
 ---
-⚠️ **Importante:** La web es un proyecto ficticio con fines de práctica y desarrollo, pero el emprendimiento es real!
+⚠️ **Importante:** La web es un proyecto ficticio con fines de práctica y desarrollo, pero el emprendimiento es **real**!
+
 👉 Podés seguirnos en Instagram:
 https://www.instagram.com/miaurabonita/
 

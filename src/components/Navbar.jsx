@@ -17,7 +17,9 @@ const Navbar = () => {
             <Nav.Link as={NavLink} to="/category/Aromaticos">Aromáticos</Nav.Link>
             <Nav.Link as={NavLink} to="/category/Varios">Varios</Nav.Link>
           </Nav>
-          <CartWidget />
+          <Link to='/cart'>
+            <CartWidget />
+          </Link>
         </BootstrapNavbar.Collapse>
       </Container>
     </BootstrapNavbar>

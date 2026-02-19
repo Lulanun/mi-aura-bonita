@@ -1,87 +1,74 @@
-import { useContext, useState } from "react"
-import { CartContext } from "../context/CartContext"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"
-import { db } from "../service/firebase"
-import { Link } from "react-router-dom"
-import EmptyCart from "./EmptyCart"
+import { createContext, useState } from "react";
+import { toast, Flip } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+export const CartContext = createContext()
 
-const Checkout = () => {
-const [buyer, setBuyer]=useState({})
-const [validMail, setValidMail] = useState('')
-const [orderId, setOrderId]= useState(null)
-const [error, setError]= useState(null)
-const [process, setProcess]= useState(false)
-const {cart, total, clear}= useContext(CartContext)
+export const CartProvider = ({children}) => {
+    const [cart, setCart] = useState([])
 
-const buyerData = (e)=> {
-    setBuyer(
-{
-    ...buyer,
-    [e.target.name]: e.target.value
-}
-    )
-}
-
-
-const finalizarCompra = (e)=> {
-//para que no recargue la app 
-    e.preventDefault()
-    if(!buyer.name || !buyer.lastname || !buyer.email || !validMail){
-        setError('Por favor complete los campos')
-    }else if (buyer.email !== validMail){
-        setError('Los correos no coiciden')
-    }else{
-        setProcess(true)
-        setError(null)
-        let orden = {
-            comprador: buyer,
-            compras: cart,
-            total:totalAPagar(),
-            date: serverTimestamp()
+    const addItem = (item, qty) => {
+        if(isInCart(item.id)){
+            setCart(
+                cart.map((prod) => {
+                    if (prod.id === item.id) {
+                        if(prod.quantity + qty <= item.stock){
+                            return {...prod, quantity: prod.quantity + qty}
+                        } else {
+                            toast.error(`No hay suficiente stock de ${item.name}`, {
+                                position: "top-center",
+                                autoClose: 2000,
+                                theme: "colored",
+                                transition: Flip,
+                            })
+                            return prod
+                        }
+                    } else {
+                        return prod
+                    }
+                })
+            )
+        } else {
+            setCart([...cart, {...item, quantity: qty}])
         }
-    const ventas = collection(db, "orders")
-       //agregar un doc
-    addDoc(ventas, orden)
-    .then((res)=>{
-        setOrderId(res.id)
-        clear()
-    })
-    .catch((error)=> console.log(error))
-    .finally(()=> setProcess(false))
     }
-}       
 
-console.log(buyer)
-
-if(!cart.length && !orderId){
-    return <EmptyCart/>
-}
-
-    return (
-    <>
-    {
-        orderId 
-        ?<div>
-            <h2>Muchas gracias por su compra</h2>
-            <h4>Su orden es: {orderId}</h4>
-            <Link className='btn btn-dark' to='/'>Volver a Home</Link>
-        </div>
-        :<div>
-            <h1>Complete por favor los datos</h1>
-            {error && <span style={{color:'red', fontWeight:'bold'}}>{error}</span>}
-            <form className='p-4 border rounded shadow-sm bg-light' onSubmit={finalizarCompra} >
-            <input className='form-control' name='name' type='text' placeholder='Ingrese su nombre' onChange={buyerData}/>
-            <input className='form-control' name='lastname' type='text' placeholder='Ingrese su apellido' onChange={buyerData}/>
-            <input className='form-control' name='email' type='email' placeholder='Ingrese su correo' onChange={buyerData}/>
-            <input className='form-control' name='email2' type='email' placeholder='Repita su correo' onChange={(e)=> setValidMail(e.target.value)} />
-            <button type='submit' className='btn btn-success' disabled={process} >{process ? 'Procesando Orden...' : 'Generar Orden'}</button>
-            </form>
-        </div>
+    const clear = () => {
+        setCart([])
     }
-        
-    </>
+
+    const removeItem = (id) => {
+        setCart(cart.filter((prod) => prod.id !== id))
+    }
+
+    const updateQuantity = (id, qty) => {
+        setCart(
+            cart.map((prod) => {
+                if (prod.id === id) {
+                    if (qty < 1 || qty > prod.stock) return prod
+                    return { ...prod, quantity: qty }
+                } else {
+                    return prod
+                }
+            })
+        )
+    }
+
+    const isInCart = (id) => {
+        return cart.some((prod) => prod.id === id)
+    }
+
+    const totalAPagar = () => {
+        return cart.reduce((acc, prod) => acc += (prod.quantity * prod.price), 0)
+    }
+
+    const cartQuantity = () => {
+        return cart.reduce((acc, prod) => acc += prod.quantity, 0)
+    }
+
+    return(
+        <CartContext.Provider value={{cart, addItem, clear, removeItem, totalAPagar, cartQuantity, updateQuantity}}>
+            {children}
+        </CartContext.Provider>
     )
-    }
-
-export default Checkout
+}

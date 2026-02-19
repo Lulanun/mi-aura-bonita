@@ -1,40 +1,57 @@
-//crear conexto
+
 import { createContext, useState } from "react";
+import { toast, Flip } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const CartContext = createContext()
-//crear el proveedor 
-export const CartProvider =({children}) =>{
-    //funciones(herramientas) para poder interactuar con elcarrito
 
-//agregar productos al carrito (se usa en ItemDetail)
+export const CartProvider =({children}) =>{
+
+
+
 const addItem = (item, qty)=>{
-if(isInCart(item.id)){
-    //modifico cantidades
-    setCart(
-        cart.map((prod)=>{
-            if (prod.id=== item.id) {
-                //Sumo cantidades
-                return {...prod, quantity:prod.quantity + qty}
-            } else {
-                return prod
-            }
-        })
-    )
-}  else{
-    setCart([...cart,{...item, quantity:qty}])
+    if(isInCart(item.id)){
+        setCart(
+            cart.map((prod)=>{
+                if (prod.id === item.id) {
+                    if(prod.quantity + qty <= item.stock){
+                        return {...prod, quantity: prod.quantity + qty}
+                    } else {
+                        toast.error(`No hay suficiente stock de ${item.name}. No se guardaron los cambios`)
+                        return prod
+                    }
+                } else {
+                    return prod
+                }
+            })
+        )
+    } else {
+        setCart([...cart,{...item, quantity:qty}])
+    }
 }
-}
-//vaciar carrito (se usa en cart y checkout)
+
 const clear=()=>{
     setCart([])
 }
-//eliminar algo del carrito (se usa een Cart)
+
 const removeItem = (id)=>{
     setCart(cart.filter((prod)=>prod.id !== prod.id))
 }
 
 const isInCart = (id) =>{
 return cart.some((prod)=> prod.id === id)
+}
+const updateQuantity = (id, qty) => {
+    setCart(
+        cart.map((prod) => {
+            if (prod.id === id) {
+                if (qty < 1 || qty > prod.stock) return prod
+                return { ...prod, quantity: qty }
+            } else {
+                return prod
+            }
+        })
+    )
 }
 
 const totalAPagar = ()=>{
@@ -53,7 +70,7 @@ return cart.reduce((acc, prod)=> acc += prod.quantity,0)
 
     const[cart, setCart]=useState([])
     return(
-<CartContext.Provider value={{cart, addItem, clear, removeItem, totalAPagar, cartQuantity}}>
+<CartContext.Provider value={{cart, addItem, clear, removeItem, totalAPagar, cartQuantity, updateQuantity}}>
             {children}
         </CartContext.Provider>
     )

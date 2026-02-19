@@ -16,11 +16,17 @@ const CartView = () => {
                 <span>${compra.price}</span>
                 <span>cantidad: {compra.quantity}</span>
                 <span>precio final: ${compra.price * compra.quantity}</span>
+                <span>cantidad: 
+                <button className='btn btn-sm btn-outline-secondary' onClick={()=> updateQuantity(compra.id, compra.quantity - 1)}>-</button>
+                <span className='mx-2'>{compra.quantity}</span>
+                <button className='btn btn-sm btn-outline-secondary' onClick={()=> updateQuantity(compra.id, compra.quantity + 1)}>+</button>
+</span>
                 <button className='btn btn-danger' onClick={()=> removeItem(compra.id)}>X</button>
             </div>
         ))}
     </div>
     <span>Total a pagar: ${totalAPagar()},00</span>
+    
     <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', width:'80%', padding:'2rem'}}>
         <button className='btn btn-danger' onClick={clear}>Vaciar Carrito</button>
         <Link className='btn btn-success' to='/checkout'>Terminar compra</Link>
