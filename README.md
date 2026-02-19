@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ✨ Mi Aura Bonita
 
 E-commerce desarrollado para **Mi Aura Bonita**, un emprendimiento familiar dedicado a la venta de productos áuricos, velas aromáticas y artículos energéticos.
@@ -219,3 +220,6 @@ src/
 **Creado en 2025/2026**
 **Entrega Final para CoderHouse React**
 -------------
+=======
+Las fotos que estan duplicadas son porque no tenia las fotos reales de los productos mencionados. 
+>>>>>>> 1e60044bde218f0804dafe98fa5de642f919ed76
