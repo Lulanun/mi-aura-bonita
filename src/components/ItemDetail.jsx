@@ -1,12 +1,11 @@
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import ItemCount from './ItemCount'
-//para poder utilizar las herramientas del contexto necesito usar el hook usecontext e importar el contexto que quiera usar.
 import { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
 
 const ItemDetail = ({ product }) => {
-//const context = useContext()
+
 const [purchase, setPurchase]= useState(false)
 const {addItem, cart} = useContext(CartContext)
   const onAdd = (cantidad) => {

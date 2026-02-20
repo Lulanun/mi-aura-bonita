@@ -1,13 +1,11 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaBeer } from 'react-icons/fa';
-//import ItemCount from './components/ItemCount'
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Navbar from "./components/Navbar"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Error from './components/Error';
-//importamos al proveedor
 import { CartProvider } from './context/CartContext';
 import CartContainer from './components/CartContainer';
 import Checkout from './components/Checkout';
@@ -17,7 +15,6 @@ import 'react-toastify/dist/ReactToastify.css'
 function App() {
   return (
     <>
-       {/* Esto va para la proxima entrega <ItemCount stock={10}/> */}
   <BrowserRouter>
       <CartProvider>
       <Navbar/>

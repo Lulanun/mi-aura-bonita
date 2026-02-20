@@ -14,12 +14,11 @@ const {type} = useParams()
 
 useEffect(()=>{
         setLoading(true)
-        //conecto a mi coleccion
+
     const prodCollection = type ? query(collection(db, "productos"), where("category", "==", type)) : collection(db, "productos")
-      // pido los documentos
+
     getDocs(prodCollection)
-    .then((res)=>{//tratamos la promesa
-        //limpiar y obtener los datos
+    .then((res)=>{
         const list = res.docs.map((doc)=>{
             return{
                 id:doc.id,
@@ -28,9 +27,8 @@ useEffect(()=>{
         })
         setData(list)
         })
-        .catch((error)=>console.log(error))//atrapar el error
+        .catch((error)=>console.log(error))
         .finally(()=> setLoading(false))
-        // console.log(getProducts())
     },[type])
 
 return(
@@ -40,10 +38,6 @@ return(
             ? <Loader text={type ? 'Cargando categoría' : 'Cargando productos'}/>
             : <div>
             <h1>{type && <span style={{textTransform:'capitalize'}}>{type}</span>}</h1>
-            {/* {data.map((prod)=><div key={prod.id} >
-                <p>Producto:{prod.name}</p>
-                <p>${prod.price}</p>
-            </div>)} */}
             <ItemList data={data}/>
         </div>
         }

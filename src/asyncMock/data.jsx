@@ -1,15 +1,4 @@
 export const products = [
-  // {
-  //   id: 1,
-  //   name: 'Spray Limpieza Energética Profunda',
-  //   shortDescription: 'Limpieza profunda del aura y armonización energética.',
-  //   description: 'Spray áurico ideal para limpiar y armonizar la energía después de visitas, discusiones o rituales. Ayuda a liberar cargas energéticas densas y renovar el campo áurico.',
-  //   beneficios: 'Eucalipto: purifica, despeja energías densas y aporta claridad mental. Romero: protege el campo energético, revitaliza y fortalece la intención. Ruda: tradicionalmente utilizada para limpieza profunda y protección espiritual.',
-  //   stock: 0,
-  //   price: 9500,
-  //   category: 'Sprays',
-  //   img: '/img/Mock.png'
-  // },
   {
     name: 'Spray Amor y Autoestima',
     shortDescription: 'Activa el amor propio y la seguridad personal.',
