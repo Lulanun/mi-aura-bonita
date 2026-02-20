@@ -176,6 +176,15 @@ Este proyecto utiliza variables de entorno por seguridad.
 
 ---
 
+
+## 🌐 Version Host
+
+La aplicación se encuentra desplegada en Vercel. Si querés ver el proyecto online sin necesidad de clonarlo, podés acceder desde el siguiente enlace:
+
+👉 https://mi-aura-bonita.vercel.app/
+
+---
+
 ## 📥 Clonar el repositorio
 
 ```bash
