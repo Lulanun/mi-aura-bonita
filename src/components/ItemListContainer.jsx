@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react"
-import { getProducts, products } from "../asyncMock/data"
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import ItemList from "./ItemList"
 import Loader from "./Loader"
 import { db } from "../service/firebase";

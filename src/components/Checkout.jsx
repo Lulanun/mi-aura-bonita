@@ -7,6 +7,7 @@ import EmptyCart from "./EmptyCart"
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { toast, Flip } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Swal from 'sweetalert2'
 
 const Checkout = () => {
     const [buyer, setBuyer] = useState({})
@@ -45,9 +46,14 @@ const Checkout = () => {
         const ventas = collection(db, "orders")
         addDoc(ventas, orden)
             .then((res) => {
-                setOrderId(res.id)
-                clear()
+            setOrderId(res.id)
+            clear()
+            Swal.fire({
+                title: "¡Compra realizada!",
+                text: `Tu número de orden es: ${res.id}`,
+                icon: "success"
             })
+        })
             .catch((error) => console.log(error))
             .finally(() => setProcess(false))
     }
@@ -62,7 +68,7 @@ const Checkout = () => {
                 ? <div className="text-center mt-5">
                     <h2>¡Muchas gracias por su compra! 🎉</h2>
                     <h4>Su orden es: <strong>{orderId}</strong></h4>
-                    <Link className='btn btn-dark mt-3' to='/'>Volver a Home</Link>
+                    <Link className='btn btn-naranja mt-3' to='/'>Volver a Home</Link>
                 </div>
                 : <div className="container mt-4" style={{ maxWidth: '600px' }}>
                     <h1 className="mb-4">Complete sus datos</h1>

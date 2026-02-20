@@ -1,12 +1,8 @@
 # ✨ Mi Aura Bonita
-
-E-commerce desarrollado para **Mi Aura Bonita**, un emprendimiento familiar dedicado a la venta de productos áuricos, velas aromáticas y artículos energéticos.
+## ❤️ Sobre el proyecto
+E-commerce desarrollado para **Mi Aura Bonita**, un emprendimiento familiar real dedicado a la venta de productos áuricos, velas aromáticas y artículos energéticos.
 
 La aplicación permite a los usuarios explorar el catálogo, visualizar detalles de productos, agregar items al carrito y completar el proceso de compra mediante checkout.
-
-## ❤️ Sobre el proyecto
-
-**Mi Aura Bonita** es un emprendimiento familiar real creado junto a mi cuñada y mi suegra, enfocado en ofrecer productos energéticos y aromáticos diseñados para el bienestar, la armonía y la conexión espiritual.
 
 ---
 ⚠️ **Importante:** La web es un proyecto ficticio con fines de práctica y desarrollo, pero el emprendimiento es **real**!
@@ -139,6 +135,29 @@ Herramienta de análisis estático para mantener calidad del código.
 * Buenas prácticas
 * Detección de errores
 * Consistencia de código
+
+---
+### 🔔 React Toastify
+
+https://fkhadra.github.io/react-toastify/introduction
+Librería para mostrar notificaciones tipo toast.
+
+**Uso en el proyecto:**
+
+* Confirmación de productos agregados al carrito
+* Alertas rápidas de acciones del usuario
+* Feedback no intrusivo
+
+### 💬 SweetAlert2
+
+https://sweetalert2.github.io/
+Librería para mostrar modales y alertas visuales modernas.
+
+**Uso en el proyecto:**
+
+* Confirmación de compra
+* Alertas de checkout
+* Mensajes importantes al usuario
 
 ---
 

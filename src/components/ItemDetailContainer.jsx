@@ -33,7 +33,7 @@ const ItemDetailContainer = () => {
   return(
     <div>
       <h2>El producto que esta buscando no existe.</h2>
-      <Link className='btn btn-dark' to='/'>Volver a Home</Link>
+      <Link className="btn-naranja" to='/'>Volver a Home</Link>
     </div>
   )
 }

@@ -1,6 +1,5 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaBeer } from 'react-icons/fa';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Navbar from "./components/Navbar"
@@ -11,25 +10,25 @@ import CartContainer from './components/CartContainer';
 import Checkout from './components/Checkout';
 import { ToastContainer, Flip } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <>
-  <BrowserRouter>
+    <BrowserRouter>
       <CartProvider>
-      <Navbar/>
-      <Routes>
-        <Route path='/' element={ <ItemListContainer saludo='Bienvenidos a Mi Aura Bonita' />}/>
-        <Route path='/category/:type' element={ <ItemListContainer saludo='Estas en la categoria: ' />}/>
-        <Route path='/item/:id' element={ <ItemDetailContainer/>}/>
-        <Route path='/cart' element={<CartContainer/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
-        <Route path='*' element={<Error/>}/>
-     </Routes>
+        <Navbar/>
+        <Routes>
+          <Route path='/' element={<ItemListContainer/>}/>
+          <Route path='/category/:type' element={<ItemListContainer/>}/>
+          <Route path='/item/:id' element={<ItemDetailContainer/>}/>
+          <Route path='/cart' element={<CartContainer/>}/>
+          <Route path='/checkout' element={<Checkout/>}/>
+          <Route path='*' element={<Error/>}/>
+        </Routes>
         <ToastContainer position="top-center" autoClose={2000} theme="colored" transition={Flip}/>
+        <Footer/>
       </CartProvider>
-  </BrowserRouter>
-    </>
+    </BrowserRouter>
   )
 }
 

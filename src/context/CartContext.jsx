@@ -14,10 +14,11 @@ const addItem = (item, qty)=>{
         setCart(
             cart.map((prod)=>{
                 if (prod.id === item.id) {
-                    if(prod.quantity + qty <= item.stock){
-                        return {...prod, quantity: prod.quantity + qty}
+                    if(qty <= item.stock){
+                        toast.success(`¡${item.name} actualizado en el carrito!`)
+                        return {...prod, quantity: qty}
                     } else {
-                        toast.error(`No hay suficiente stock de ${item.name}. No se guardaron los cambios`)
+                        toast.error(`No hay suficiente stock de ${item.name}`)
                         return prod
                     }
                 } else {
@@ -26,6 +27,7 @@ const addItem = (item, qty)=>{
             })
         )
     } else {
+        toast.success(`¡${item.name} agregado al carrito!`)
         setCart([...cart,{...item, quantity:qty}])
     }
 }
@@ -35,21 +37,26 @@ const clear=()=>{
 }
 
 const removeItem = (id)=>{
-    setCart(cart.filter((prod)=>prod.id !== prod.id))
+    setCart(cart.filter((prod)=>prod.id !== id))
 }
 
 const isInCart = (id) =>{
 return cart.some((prod)=> prod.id === id)
 }
+
 const updateQuantity = (id, qty) => {
     setCart(
         cart.map((prod) => {
-            if (prod.id === id) {
-                if (qty < 1 || qty > prod.stock) return prod
-                return { ...prod, quantity: qty }
-            } else {
-                return prod
-            }
+        if (prod.id === id) {
+        if (qty < 1) return prod
+        if (qty > prod.stock) {
+        toast.error(`Stock máximo de ${prod.name}: ${prod.stock} unidades`)
+        return prod
+        }
+        return { ...prod, quantity: qty }
+        } else {
+        return prod
+        }
         })
     )
 }

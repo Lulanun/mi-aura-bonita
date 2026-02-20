@@ -3,17 +3,18 @@ import Tab from 'react-bootstrap/Tab'
 import ItemCount from './ItemCount'
 import { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
+import { toast, Flip } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const ItemDetail = ({ product }) => {
-
-const [purchase, setPurchase]= useState(false)
 const {addItem, cart} = useContext(CartContext)
-  const onAdd = (cantidad) => {
-    console.log(`Agregaste ${cantidad} de ${product.name}`)
-    addItem(product, cantidad)
-    setPurchase(true)
-  }
+const productInCart = cart.find((prod) => prod.id === product.id)
+const currentQuantity = productInCart ? productInCart.quantity : 1
 
+
+  const onAdd = (cantidad) => {
+    addItem(product, cantidad)
+  }
   return (
     <div className="container mt-4">
       <h2 className="mb-3">{product.name}</h2>
@@ -45,7 +46,7 @@ const {addItem, cart} = useContext(CartContext)
 
           </Tabs>
 
-          <ItemCount stock={product.stock} onAdd={onAdd} />
+        <ItemCount stock={product.stock} onAdd={onAdd} initialCount={currentQuantity}/>
         </div>
       </div>
 

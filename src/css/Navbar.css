@@ -1,15 +1,30 @@
 .navbar-nav .nav-link {
-    color: rgb(255, 177, 125);
-    font-weight: bold;
+  color: rgb(255, 177, 125);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgb(235, 157, 105);
 }
 
 .navbar-nav .nav-link.active {
-    text-decoration: underline;   
+  text-decoration: underline;
+}
+
+.navbar {
+  box-shadow: 0 4px 15px rgba(255, 177, 125, 0.15);
 }
 
 .logo {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 0;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
